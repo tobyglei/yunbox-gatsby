@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 export const FullWidthImage = ({ slice }) => (
   <section className="full-width-image content-section">
     <img
-      src={slice.primary.full_width_image.url}
+      src={slice.primary.full_width_image.localFile.childImageSharp.fluid.originalImg}
       alt={slice.primary.full_width_image.alt}
     />
   </section>
@@ -15,6 +15,13 @@ export const query = graphql`
     primary {
       full_width_image {
         url
+        localFile {
+          childImageSharp {
+            fluid {
+              originalImg
+            }
+          }
+        }
       }
     }
   }
@@ -22,6 +29,13 @@ export const query = graphql`
     primary {
       full_width_image {
         url
+        localFile {
+          childImageSharp {
+            fluid {
+              originalImg
+            }
+          }
+        }
       }
     }
   }

@@ -15,7 +15,7 @@ export const ImageHighlight = ({ slice }) => (
     </div>
     <div className="highlight-right">
       <img
-        src={slice.primary.featured_image.url}
+        src={slice.primary.featured_image.localFile.childImageSharp.fluid.originalImg}
         alt={slice.primary.featured_image.alt}
       />
     </div>
@@ -28,6 +28,13 @@ export const query = graphql`
       featured_image {
         url
         alt
+        localFile {
+          childImageSharp {
+            fluid {
+              originalImg
+            }
+          }
+        }
       }
       title {
         richText
@@ -50,6 +57,13 @@ export const query = graphql`
       featured_image {
         url
         alt
+        localFile {
+          childImageSharp {
+            fluid {
+              originalImg
+            }
+          }
+        }
       }
       title {
         richText

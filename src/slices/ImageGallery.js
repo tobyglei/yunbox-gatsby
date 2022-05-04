@@ -9,7 +9,7 @@ export const ImageGallery = ({ slice }) => {
       <div className="gallery">
         {slice.items.map((galleryItem, index) => (
           <div className="gallery-item" key={`gallery-item=${index}`}>
-            <img src={galleryItem.image.url} alt={galleryItem.image.alt} />
+            <img src={galleryItem.image.localFile.childImageSharp.fluid.originalImg} alt={galleryItem.image.alt} />
             <PrismicRichText field={galleryItem.image_description.richText} />
             <p className="gallery-link">
               <PrismicLink href={galleryItem.link.url}>
@@ -34,6 +34,13 @@ export const query = graphql`
       image {
         url
         alt
+        localFile {
+          childImageSharp {
+            fluid {
+              originalImg
+            }
+          }
+        }
       }
       image_description {
         richText
@@ -58,6 +65,13 @@ export const query = graphql`
       image {
         url
         alt
+        localFile {
+          childImageSharp {
+            fluid {
+              originalImg
+            }
+          }
+        }
       }
       image_description {
         richText

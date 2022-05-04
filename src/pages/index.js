@@ -21,7 +21,7 @@ const HomeTemplate = ({ data }) => {
         description={doc.banner_description.text}
         linkUrl={doc.banner_link.url}
         linkLabel={doc.banner_link_label.text}
-        backgroundUrl={doc.banner_background.url}
+        backgroundUrl={doc.banner_background.localFile.childImageSharp.fluid.originalImg}
       />
       <SliceZone slices={doc.body} components={components} />
     </Layout>
@@ -49,6 +49,13 @@ export const query = graphql`
         }
         banner_background {
           url
+          localFile {
+            childImageSharp {
+              fluid {
+                originalImg
+              }
+            }
+          }
         }
         body {
           ... on PrismicSliceType {

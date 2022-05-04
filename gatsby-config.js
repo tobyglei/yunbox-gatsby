@@ -11,12 +11,6 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: 'gatsby-plugin-prismic-previews',
-      options: {
-        repositoryName: process.env.GATSBY_PRISMIC_REPO_NAME,
-      },
-    },
-    {
       resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: process.env.GATSBY_PRISMIC_REPO_NAME,
@@ -26,9 +20,12 @@ module.exports = {
           navigation: require('./custom_types/navigation.json'),
           page: require('./custom_types/page.json'),
         },
-      },
+        shouldDownloadFiles:true
+      }
     },
     'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-manifest',
